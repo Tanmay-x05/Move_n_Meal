@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* New palette: Ivory #F7F7F2, Charcoal #515052, Slate Blue #6C91C2, Forest #516A4E */
+
+    --background: 60 14% 96%; /* Ivory #F7F7F2 */
+    --foreground: 300 1% 32%; /* Charcoal #515052 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 300 1% 32%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 300 1% 32%;
+
+    --primary: 213 40% 59%; /* Slate Blue #6C91C2 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 114 15% 36%; /* Forest #516A4E */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 60 14% 94%; /* Ivory light */
+    --muted-foreground: 300 1% 45%;
+
+    --accent: 114 15% 94%; /* Forest light */
+    --accent-foreground: 300 1% 32%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 60 10% 88%;
+    --input: 60 10% 88%;
+    --ring: 213 40% 59%; /* Slate Blue */
+
+    --radius: 0.5rem;
+
+    --chart-1: 213 40% 59%; /* Slate Blue */
+    --chart-2: 114 15% 36%; /* Forest */
+    --chart-3: 300 1% 32%; /* Charcoal */
+    --chart-4: 213 40% 70%;
+    --chart-5: 114 15% 50%;
+
+    --sidebar-background: 60 14% 97%;
+    --sidebar-foreground: 300 1% 32%;
+    --sidebar-primary: 213 40% 59%; /* Slate Blue */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 60 14% 94%;
+    --sidebar-accent-foreground: 300 1% 32%;
+    --sidebar-border: 60 10% 90%;
+    --sidebar-ring: 213 40% 59%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%; /* Carbon dark */
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Clean typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-charcoal-dark;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  /* Minimalist card style */
+  .card-minimal {
+    @apply bg-white rounded-lg border border-ivory-200 transition-all duration-200;
+  }
+
+  .card-minimal:hover {
+    @apply border-slate-blue-300 shadow-sm;
+  }
+
+  /* Clean button base */
+  .btn-primary {
+    @apply bg-slate-blue text-white hover:bg-slate-blue-600 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-forest/20 text-charcoal hover:bg-forest/30 transition-colors duration-200;
+  }
+
+  /* Soft input style */
+  .input-minimal {
+    @apply bg-ivory border-ivory-200 focus:border-slate-blue focus:ring-slate-blue/20 transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  /* Subtle animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.4s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out forwards;
+  }
+
+  /* Stagger children animations */
+  .stagger-children > * {
+    opacity: 0;
+    animation: fadeInUp 0.3s ease-out forwards;
+  }
+
+  .stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+  .stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+
+  /* Glass morphism - subtle */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/50;
+  }
+
+  /* Gradient text using slate-blue */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-blue to-forest;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B0C9E3;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6C91C2;
+}
+
+/* Clean focus states */
+*:focus-visible {
+  @apply outline-none ring-2 ring-slate-blue/50 ring-offset-2 ring-offset-background;
+}
+
+/* Selection with theme color */
+::selection {
+  @apply bg-slate-blue/20 text-charcoal-dark;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
